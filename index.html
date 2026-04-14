@@ -1456,16 +1456,16 @@
    MOBILE - full responsive treatment for phones
    ============================================================ */
       @media (max-width: 600px) {
-        /* Let slides grow to fit content instead of clipping */
+        /* Keep snap scrolling for slide-by-slide feel on mobile */
         html {
-          scroll-snap-type: none;
+          scroll-snap-type: y mandatory;
         }
         .slide {
-          height: auto;
-          min-height: 100vh;
-          min-height: 100dvh;
-          overflow: visible;
-          scroll-snap-align: none;
+          height: 100vh;
+          height: 100dvh;
+          overflow-y: auto;
+          scroll-snap-align: start;
+          -webkit-overflow-scrolling: touch;
         }
 
         /* Tighter padding */
@@ -3397,13 +3397,13 @@
       <div class="corner-br"></div>
 
       <div class="slide-content">
-        <div class="hero-ornament-top reveal">- -</div>
+        <div class="hero-ornament-top reveal">·</div>
         <div class="thankyou-display reveal-scale d1">Thank&nbsp;You</div>
         <div class="thankyou-sub reveal d2">
           Questions · Discussion · Feedback
         </div>
         <div class="hero-ornament-bottom reveal d3">
-          Ms. Amruta Gautam Salve &nbsp;·&nbsp; Maulana Azad College
+          Ms. Amruta Gautam Salve
         </div>
       </div>
     </section>
@@ -3522,8 +3522,6 @@
             { passive: true },
           );
           document.addEventListener("touchend", (e) => {
-            // On mobile, let native scroll handle navigation
-            if (isMobile()) return;
             const dy = startY - e.changedTouches[0].clientY;
             const dx = startX - e.changedTouches[0].clientX;
             if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 50) {
