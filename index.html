@@ -1451,14 +1451,306 @@
           display: none;
         }
       }
+
+      /* ============================================================
+   MOBILE — full responsive treatment for phones
+   ============================================================ */
       @media (max-width: 600px) {
-        .apps-grid,
-        .carbon-timeline,
-        .scale-strip {
-          grid-template-columns: 1fr 1fr;
+        /* Let slides grow to fit content instead of clipping */
+        html {
+          scroll-snap-type: none;
+        }
+        .slide {
+          height: auto;
+          min-height: 100vh;
+          min-height: 100dvh;
+          overflow: visible;
+          scroll-snap-align: none;
+        }
+
+        /* Tighter padding */
+        :root {
+          --slide-padding: clamp(1rem, 5vw, 1.5rem);
+          --content-gap: clamp(0.6rem, 3vw, 1rem);
+          --element-gap: clamp(0.3rem, 2vw, 0.6rem);
+        }
+
+        /* Scale down type for phone screens */
+        :root {
+          --display-size: clamp(1.8rem, 8vw, 2.8rem);
+          --title-size: clamp(1.5rem, 7vw, 2.4rem);
+          --h1-size: clamp(1.35rem, 6.5vw, 2.2rem);
+          --h2-size: clamp(1.15rem, 5vw, 1.7rem);
+          --h3-size: clamp(1rem, 4vw, 1.3rem);
+          --body-size: clamp(0.88rem, 3.8vw, 1.05rem);
+          --small-size: clamp(0.78rem, 3.2vw, 0.92rem);
+          --tag-size: clamp(0.62rem, 2.6vw, 0.78rem);
+        }
+
+        .slide-content {
+          padding: clamp(3.2rem, 12vw, 4rem) var(--slide-padding) clamp(3rem, 10vw, 3.5rem);
+        }
+
+        /* Hide decorative chrome that eats mobile real estate */
+        .corners, .corner-bl, .corner-br {
+          display: none;
+        }
+        .grid-lines {
+          display: none;
+        }
+        .atmos::before {
+          width: 80vw;
+          height: 80vw;
+          opacity: 0.12;
+        }
+        .atmos::after {
+          width: 90vw;
+          height: 90vw;
+          opacity: 0.08;
+        }
+
+        /* Ribbon & footer: compact on mobile */
+        .ribbon {
+          padding: 0.5rem var(--slide-padding);
+          font-size: clamp(0.55rem, 2.4vw, 0.7rem);
+          letter-spacing: 0.12em;
+          flex-wrap: wrap;
+          gap: 0.3rem;
+        }
+        .ribbon::after {
+          left: var(--slide-padding);
+          right: var(--slide-padding);
+        }
+        .footer-bar {
+          padding: 0.5rem var(--slide-padding);
+          font-size: clamp(0.55rem, 2.4vw, 0.7rem);
+          letter-spacing: 0.12em;
+        }
+
+        /* Progress bar thinner */
+        .progress-bar {
+          height: 2px;
+        }
+
+        /* Nav hint: smaller on mobile */
+        .nav-hint {
+          font-size: clamp(0.55rem, 2.2vw, 0.68rem);
+          bottom: 0.4rem;
+          right: var(--slide-padding);
+        }
+
+        /* ---- SLIDE 1: Title card ---- */
+        .slide-title-card .slide-content {
+          gap: clamp(0.8rem, 4vw, 1.5rem);
+          padding-top: clamp(2rem, 8vw, 3rem);
         }
         .institution-logos {
-          gap: 1.5rem;
+          gap: clamp(1rem, 5vw, 2rem);
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .institution-logos img {
+          height: clamp(60px, 18vw, 100px);
+        }
+        .institution-logos .logo-frame {
+          padding: clamp(0.4rem, 2vw, 0.8rem);
+        }
+        .uni-name {
+          font-size: clamp(1.2rem, 5.5vw, 2rem);
+        }
+        .college-name {
+          font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+        }
+        .hero-ornament-top,
+        .hero-ornament-bottom {
+          font-size: clamp(0.6rem, 2.8vw, 0.85rem);
+          letter-spacing: 0.2em;
+        }
+        .hero-ornament-top::before,
+        .hero-ornament-top::after,
+        .hero-ornament-bottom::before,
+        .hero-ornament-bottom::after {
+          min-width: clamp(1rem, 6vw, 3rem);
+        }
+
+        /* ---- SLIDE 2: Presenter ---- */
+        .presenter-grid {
+          grid-template-columns: 1fr;
+          gap: 0.7rem;
+        }
+        .presenter-card {
+          padding: clamp(0.8rem, 3.5vw, 1.2rem);
+        }
+        .presenter-card.featured {
+          transform: none;
+        }
+        .presenter-name {
+          font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+        }
+        .topic-title {
+          font-size: clamp(1.3rem, 5.5vw, 2rem);
+        }
+
+        /* ---- Two-column: stack with image capped ---- */
+        .two-col,
+        .two-col.text-heavy,
+        .two-col.media-heavy {
+          grid-template-columns: 1fr;
+          gap: clamp(0.8rem, 4vw, 1.2rem);
+        }
+        .two-col .media {
+          max-height: 40vh;
+        }
+        .two-col .media img {
+          max-height: 35vh;
+        }
+
+        /* ---- Question cards ---- */
+        .questions-grid {
+          grid-template-columns: 1fr;
+          gap: 0.5rem;
+        }
+        .question-card {
+          padding: clamp(0.7rem, 3vw, 1rem);
+        }
+        .question-text {
+          font-size: clamp(0.9rem, 3.8vw, 1.15rem);
+        }
+
+        /* ---- Scale strip ---- */
+        .scale-strip {
+          grid-template-columns: repeat(3, 1fr);
+          gap: clamp(0.3rem, 1.5vw, 0.5rem);
+        }
+        .scale-strip::after {
+          display: none;
+        }
+        .scale-item {
+          padding: clamp(0.4rem, 2vw, 0.7rem) clamp(0.2rem, 1vw, 0.4rem);
+        }
+        .scale-item .icon svg {
+          width: clamp(1.5rem, 7vw, 2.2rem);
+          height: clamp(1.5rem, 7vw, 2.2rem);
+        }
+        .scale-label {
+          font-size: clamp(0.68rem, 2.8vw, 0.82rem);
+        }
+        .scale-size {
+          font-size: clamp(0.6rem, 2.5vw, 0.75rem);
+        }
+
+        /* ---- Quote blocks ---- */
+        .quote-block {
+          padding: clamp(0.8rem, 3.5vw, 1.3rem);
+          padding-left: clamp(1.3rem, 5vw, 2rem);
+        }
+        .quote-block::before {
+          font-size: clamp(2rem, 8vw, 3.5rem);
+        }
+        .quote-text {
+          font-size: clamp(0.92rem, 3.8vw, 1.2rem);
+        }
+
+        /* ---- Apps grid ---- */
+        .apps-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 0.5rem;
+        }
+        .app-card {
+          padding: clamp(0.7rem, 3vw, 1rem);
+        }
+        .app-title {
+          font-size: clamp(0.92rem, 3.8vw, 1.2rem);
+        }
+
+        /* ---- Carbon timeline ---- */
+        .carbon-timeline {
+          grid-template-columns: 1fr 1fr;
+          gap: 0.5rem;
+        }
+        .carbon-card {
+          padding: clamp(0.6rem, 2.5vw, 0.9rem);
+        }
+        .carbon-card img {
+          max-height: clamp(50px, 15vw, 90px);
+        }
+
+        /* ---- Media frames ---- */
+        .media-frame {
+          padding: clamp(0.3rem, 1.5vw, 0.6rem);
+        }
+        .kicker {
+          font-size: clamp(0.6rem, 2.5vw, 0.78rem);
+        }
+
+        /* ---- Bullets ---- */
+        ul.bullets li {
+          padding-left: 1.6em;
+          font-size: var(--body-size);
+        }
+        ul.bullets li::before {
+          width: 0.9em;
+        }
+        ul.bullets li::after {
+          left: 0.7em;
+          width: 4px;
+          height: 4px;
+        }
+
+        /* ---- Eyebrow ---- */
+        .eyebrow {
+          margin-bottom: clamp(0.4rem, 2vw, 0.8rem);
+        }
+        .eyebrow::before {
+          width: clamp(1.2em, 5vw, 2em);
+        }
+
+        /* ---- Thank you slide ---- */
+        .thankyou-display {
+          font-size: clamp(3rem, 16vw, 6rem);
+        }
+        .thankyou-sub {
+          font-size: clamp(0.65rem, 2.8vw, 0.9rem);
+          letter-spacing: 0.3em;
+        }
+
+        /* ---- Lead paragraph ---- */
+        p.lead {
+          font-size: clamp(0.95rem, 4vw, 1.2rem);
+        }
+
+        /* ---- Inline badges ---- */
+        .inline-badge {
+          font-size: 0.75em;
+          padding: 0.1em 0.5em;
+        }
+
+        /* Slide 9 full-width image */
+        .media-frame img[style*="max-height: 65vh"] {
+          max-height: 50vh !important;
+        }
+      }
+
+      /* Extra-small phones (< 380px) */
+      @media (max-width: 380px) {
+        :root {
+          --slide-padding: 0.75rem;
+        }
+        .scale-strip {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .apps-grid {
+          grid-template-columns: 1fr;
+        }
+        .institution-logos {
+          flex-direction: column;
+          gap: 0.8rem;
+        }
+        .presenter-name {
+          font-size: clamp(1rem, 5vw, 1.3rem);
+        }
+        .ribbon > span:last-child {
+          display: none;
         }
       }
 
@@ -3125,10 +3417,11 @@
         }
 
         initObserver() {
+          const isMobile = window.innerWidth <= 600;
           const io = new IntersectionObserver(
             (entries) => {
               entries.forEach((entry) => {
-                if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
+                if (entry.isIntersecting && entry.intersectionRatio > (isMobile ? 0.15 : 0.4)) {
                   // reveal staggered children
                   const els = entry.target.querySelectorAll(
                     ".reveal, .reveal-scale, .reveal-left",
@@ -3139,7 +3432,7 @@
                 }
               });
             },
-            { threshold: [0.4, 0.7] },
+            { threshold: isMobile ? [0.15, 0.4] : [0.4, 0.7] },
           );
           this.slides.forEach((s) => io.observe(s));
         }
@@ -3202,6 +3495,7 @@
         bindTouch() {
           let startY = 0,
             startX = 0;
+          const isMobile = () => window.innerWidth <= 600;
           document.addEventListener(
             "touchstart",
             (e) => {
@@ -3211,6 +3505,8 @@
             { passive: true },
           );
           document.addEventListener("touchend", (e) => {
+            // On mobile, let native scroll handle navigation
+            if (isMobile()) return;
             const dy = startY - e.changedTouches[0].clientY;
             const dx = startX - e.changedTouches[0].clientX;
             if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 50) {
