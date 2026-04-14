@@ -1488,11 +1488,14 @@
         }
 
         .slide-content {
-          padding: clamp(3.2rem, 12vw, 4rem) var(--slide-padding) clamp(3rem, 10vw, 3.5rem);
+          padding: clamp(3.2rem, 12vw, 4rem) var(--slide-padding)
+            clamp(3rem, 10vw, 3.5rem);
         }
 
         /* Hide decorative chrome that eats mobile real estate */
-        .corners, .corner-bl, .corner-br {
+        .corners,
+        .corner-bl,
+        .corner-br {
           display: none;
         }
         .grid-lines {
@@ -2905,12 +2908,12 @@
             <ul class="bullets">
               <li class="reveal d2">
                 In making <strong>OLED screens</strong>, nanotechnology is
-                extremely important — packed with nanoparticle coatings to guard
+                extremely important - packed with nanoparticle coatings to guard
                 against environmental deterioration.
               </li>
               <li class="reveal d3">
                 <strong>Nanowires as electrodes</strong> enable larger, more
-                flexible OLED screens — flexible phones that can coil around the
+                flexible OLED screens - flexible phones that can coil around the
                 wrist like a bracelet.
               </li>
               <li class="reveal d4">
@@ -3419,7 +3422,10 @@
           const io = new IntersectionObserver(
             (entries) => {
               entries.forEach((entry) => {
-                if (entry.isIntersecting && entry.intersectionRatio > (isMobile ? 0.15 : 0.4)) {
+                if (
+                  entry.isIntersecting &&
+                  entry.intersectionRatio > (isMobile ? 0.15 : 0.4)
+                ) {
                   // reveal staggered children
                   const els = entry.target.querySelectorAll(
                     ".reveal, .reveal-scale, .reveal-left",
