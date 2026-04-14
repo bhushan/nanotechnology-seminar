@@ -1726,9 +1726,15 @@
           padding: 0.1em 0.5em;
         }
 
-        /* Slide 9 full-width image */
-        .media-frame img[style*="max-height: 65vh"] {
-          max-height: 50vh !important;
+        /* Slide 9 synthesis chart — fit to mobile screen */
+        .slide9-frame {
+          max-height: none;
+          width: 100%;
+        }
+        .slide9-img {
+          max-height: none;
+          width: 100%;
+          height: auto;
         }
       }
 
@@ -1785,6 +1791,17 @@
       }
       .gold-text {
         color: var(--gold-bright);
+      }
+
+      /* Slide 9 — synthesis chart image */
+      .slide9-frame {
+        max-height: 72vh;
+      }
+      .slide9-img {
+        max-height: 65vh;
+        max-width: 100%;
+        width: 100%;
+        object-fit: contain;
       }
 
       /* Inline badge */
@@ -2552,11 +2569,11 @@
             min-height: 0;
           "
         >
-          <div class="media-frame" style="max-height: 72vh">
+          <div class="media-frame slide9-frame">
             <img
               src="assets/slide9_img16.png"
               alt="Methods of synthesis classification chart"
-              style="max-height: 65vh"
+              class="slide9-img"
             />
           </div>
         </div>
@@ -2962,7 +2979,7 @@
           style="margin-bottom: clamp(0.6rem, 1.5vh, 1rem)"
         >
           From C60 bulkyballs (1985) → carbon nanotubes (1991) → graphene &amp;
-          C-dots (2004) — carbon-based materials became the backbone of every
+          C-dots (2004) - carbon-based materials became the backbone of every
           field of science and engineering.
         </p>
 
@@ -2993,8 +3010,8 @@
           class="body reveal d6"
           style="margin-top: clamp(0.8rem, 2vh, 1.4rem)"
         >
-          <strong>C-dots</strong> — benign, abundant, inexpensive, low-toxicity,
-          bio-compatible — power bio-imaging, biosensors, drug delivery,
+          <strong>C-dots</strong> - benign, abundant, inexpensive, low-toxicity,
+          bio-compatible - power bio-imaging, biosensors, drug delivery,
           catalysis, energy conversion, photocatalysis and sensitive ion
           detection.
         </p>
@@ -3028,9 +3045,9 @@
                 hydrogen storage systems.
               </li>
               <li class="reveal d3">
-                <strong>TiO₂</strong> and <strong>ZnO</strong> nanomaterials act
-                as efficient photocatalysts for hydrogen production through
-                water splitting.
+                <strong>Titanium dioxide (TiO₂)</strong> and
+                <strong>Zinc oxide (ZnO)</strong> nanomaterials act as efficient
+                photocatalysts for hydrogen production through water splitting.
               </li>
               <li class="reveal d4">
                 Nanotechnology is being used in many ways to improve
@@ -3078,7 +3095,7 @@
                 to improve performance.
               </li>
               <li class="reveal d3">
-                <strong>Water- and stain-repellent</strong> clothing uses
+                <strong>Water and stain repellent clothing</strong> uses
                 nano-sized whiskers that cause water to bead up on the surface.
               </li>
               <li class="reveal d4">
@@ -3096,8 +3113,8 @@
             <div class="media-frame">
               <img src="assets/slide19_img41.jpg" alt="Nano-coated fabric" />
               <div class="kicker">
-                Selenium Nanoparticle Fabric &nbsp;·&nbsp; Long-lasting Nano
-                Coating
+                Selenium Nanoparticle Fabric <br />
+                Long-lasting Nano Coating
               </div>
             </div>
           </div>
@@ -3130,7 +3147,7 @@
             <ul class="bullets">
               <li class="reveal d2">
                 Nanoparticles as <strong>therapeutics</strong> can be delivered
-                to targeted sites — including locations not easily reached by
+                to targeted sites - including locations not easily reached by
                 standard drugs.
               </li>
               <li class="reveal d3">
@@ -3138,17 +3155,17 @@
                 natural tooth maintenance.
               </li>
               <li class="reveal d4">
-                In <strong>agriculture</strong> — crop health, fertilisers, pest
+                In <strong>agriculture</strong> - crop health, fertilisers, pest
                 control, food safety, drought stress, plant breeding,
                 photosynthesis.
               </li>
               <li class="reveal d5">
-                In <strong>food science</strong> — processing, packaging,
+                In <strong>food science</strong> - processing, packaging,
                 functional food, safety, pathogen detection, shelf-life
                 extension.
               </li>
               <li class="reveal d6">
-                In <strong>tissue engineering</strong> — nanofibers,
+                In <strong>tissue engineering</strong> - nanofibers,
                 nanopatterned surfaces to control cell behaviour, regulated
                 release of bioactive growth factors.
               </li>
